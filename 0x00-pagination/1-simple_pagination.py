@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """This module contains index_range() function and Server class"""
 
-import csv
 import math
 from typing import List, Tuple
 import csv
@@ -41,11 +40,8 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         assert type(page) is int and page > 0
         assert type(page_size) is int and page_size > 0
-        with open('Popular_Baby_Names.csv', 'r') as file:
-            csv_reader = csv.reader(file)
-            start_index, end_index = index_range(page, page_size)
-            csv_list = list(csv_reader)
-            csv_list = csv_list[1:]
-            if start_index >= len(csv_list) or end_index >= len(csv_list):
-                return []
-            return csv_list[start_index: end_index]
+        start_index, end_index = index_range(page, page_size)
+        dataset = self.dataset()
+        if start_index >= len(dataset) or end_index >= len(dataset):
+            return []
+        return dataset[start_index: end_index]
