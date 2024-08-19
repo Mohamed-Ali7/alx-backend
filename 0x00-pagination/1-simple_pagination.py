@@ -44,4 +44,8 @@ class Server:
         with open('Popular_Baby_Names.csv', 'r') as file:
             csv_reader = csv.reader(file)
             start_index, end_index = index_range(page, page_size)
-            return list(csv_reader)[start_index + 1: end_index + 1]
+            csv_list = list(csv_reader)
+            csv_list = csv_list[1:]
+            if start_index >= len(csv_list) or end_index >= len(csv_list):
+                return []
+            return csv_list[start_index + 1: end_index + 1]
