@@ -48,4 +48,4 @@ class Server:
             csv_list = csv_list[1:]
             if start_index >= len(csv_list) or end_index >= len(csv_list):
                 return []
-            return csv_list[start_index + 1: end_index + 1]
+            return csv_list[start_index: end_index]
