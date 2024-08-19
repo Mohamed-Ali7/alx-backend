@@ -13,10 +13,7 @@ def index_range(page, page_size) -> Tuple[int, int]:
     particular pagination parameters.
     """
 
-    start_index = (page - 1) * page_size
-    end_index = page_size * page
-
-    return (start_index, end_index)
+    return ((page - 1) * page_size, ((page - 1) * page_size) + page_size)
 
 
 class Server:
@@ -38,10 +35,10 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        assert type(page) is int and type(page_size) is int
+        assert type(page) == int and type(page_size) == int
         assert page > 0 and page_size > 0
-        start_index, end_index = index_range(page, page_size)
-        dataset = self.dataset()
-        if start_index > len(dataset):
+        start, end = index_range(page, page_size)
+        data = self.dataset()
+        if start > len(data):
             return []
-        return dataset[start_index: end_index]
+        return data[start:end]
