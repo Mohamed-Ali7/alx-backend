@@ -39,9 +39,9 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        assert type(page) == int and page > 0
-        assert type(page_size) == int and page_size > 0
-        with open ('Popular_Baby_Names.csv' ,'r') as file:
+        assert type(page) is int and page > 0
+        assert type(page_size) is int and page_size > 0
+        with open('Popular_Baby_Names.csv', 'r') as file:
             csv_reader = csv.reader(file)
-            result = index_range(page, page_size)
-            return list(csv_reader)[result[0]: result[1]]
+            start_index, end_index = index_range(page, page_size)
+            return list(csv_reader)[start_index + 1: end_index]
