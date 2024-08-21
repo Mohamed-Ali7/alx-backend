@@ -44,6 +44,5 @@ class LRUCache(BaseCaching):
 
     def get(self, key):
         """ Get an item by key"""
-        if key in self.use_frequency.keys():
-            self.use_frequency[key] += 1
+        self.most_recent = key
         return self.cache_data.get(key)
