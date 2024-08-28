@@ -2,8 +2,9 @@
 '''Task 2: Get locale from request
 '''
 
+from typing import Optional
 from flask import Flask, render_template, request
-from flask_babel import Babel
+from flask_babel import Babel # type: ignore
 
 
 class Config:
@@ -22,7 +23,7 @@ babel = Babel(app)
 
 
 @babel.localeselector
-def get_locale() -> str:
+def get_locale() -> Optional[str]:
     """Retrieves the locale for a web page.
 
     Returns:
@@ -47,4 +48,5 @@ def index() -> str:
 
 
 if __name__ == "__main__":
+    """runs the app"""
     app.run()
