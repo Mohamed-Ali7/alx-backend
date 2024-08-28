@@ -3,7 +3,7 @@
 '''
 
 from flask import Flask, render_template, request
-from flask_babel import Babel # type: ignore
+from flask_babel import Babel
 
 
 class Config:
