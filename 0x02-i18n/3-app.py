@@ -2,7 +2,6 @@
 '''Task 2: Get locale from request
 '''
 
-from typing import Optional
 from flask import Flask, render_template, request
 from flask_babel import Babel # type: ignore
 
@@ -23,7 +22,7 @@ babel = Babel(app)
 
 
 @babel.localeselector
-def get_locale() -> Optional[str]:
+def get_locale() -> str:
     """Retrieves the locale for a web page.
 
     Returns:
